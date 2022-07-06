@@ -1,22 +1,33 @@
 import sys
 
 n_repeat = int(sys.stdin.readline())
-n_list   = []
+my_list  = []
 
 for i in range(n_repeat):
-    input_order = sys.stdin.readline().split()
+    value_input = sys.stdin.readline().split()
+    
+    if value_input[0] == "push":
+        my_list.append(value_input[1])
 
-    if input_order[0] == 'push':
-        n_list.append(input_order[1])
+    elif value_input[0] == "pop":
+        if len(my_list) > 0:
+            print(my_list[len(my_list)-1])
+            my_list.pop()
 
-    elif input_order[0] == 'pop':
-        print(n_list.pop() if len(n_list) > 0 else -1)
+        elif len(my_list) == 0:
+            print("-1")
 
-    elif input_order[0] == 'size':
-        print(len(n_list))
+    elif value_input[0] == "size":
+        print(len(my_list))
 
-    elif input_order[0] == 'empty':
-        print(0 if len(n_list) > 0 else 1)
+    elif value_input[0] == "empty":
+        if len(my_list) > 0:
+            print("0")
+        elif len(my_list) == 0:
+            print("1")
 
-    elif input_order[0] == 'top':
-        print(n_list[len(n_list)-1] if len(n_list) > 0 else -1)
+    elif value_input[0] == "top":
+        if len(my_list) > 0:
+            print(my_list[len(my_list)-1])
+        elif len(my_list) == 0:
+            print("-1")
