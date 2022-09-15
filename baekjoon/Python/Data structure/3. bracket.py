@@ -1,18 +1,25 @@
-num_repeat = int(input())
-for i in range(num_repeat):
-    bracket_list = list(input())
-    score = 0
-    for i in bracket_list:
+import sys
+from timeit import repeat
+
+repeat_number = int(sys.stdin.readline())
+
+for i in range(repeat_number):
+    bracketList = list(sys.stdin.readline())
+    check = 0 # 괄호를 체크해줄 변수
+
+    for i in bracketList:
         if i == "(":
-            score += 1
+            check += 1
+
         elif i == ")":
-            score -= 1
+            check -= 1
 
-        if score < 0:
-            print('No')
+        if check < 0:
+            print('NO')
             break
+    
+    if check > 0:
+        print('NO')
 
-    if score > 0:
-        print('No')
-    elif score == 0:
-        print('Yes')
+    elif check == 0:
+        print('YES')
